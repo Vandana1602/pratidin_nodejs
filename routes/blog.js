@@ -61,9 +61,9 @@ router.get("/compose",requireLogin, (req, res) => {
 router.post("/compose",requireLogin,validateBlog, async (req, res) => {
     let {title,content,hashtags}=req.body;
      title=title.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
-    console.log(title);
+    //console.log(title);
     const stringArray = hashtags. split(",");
-    console.log(stringArray);
+    //console.log(stringArray);
     const obj = new Blog({title,content,hashtags:stringArray,author:req.session.userid});
     
     const user= await User.findById(req.session.userid);
@@ -74,12 +74,13 @@ router.post("/compose",requireLogin,validateBlog, async (req, res) => {
     res.redirect("/");
 });
 
-router.get("/posts/:id",requireLogin,async (req, res) => {
+router.get("/posts/:id",async (req, res) => {
     const id = req.params.id;
     const obj = await Blog.findById(id).populate('author');
-    console.log(obj);
+    //console.log(obj);
     if (obj) {
-        return res.render('blog/post', { post: obj });
+        //console.log(req.session.userid)
+        return res.render('blog/post', { post: obj, user_id: req.session.userid});
     }
     res.redirect("/");
 
@@ -101,7 +102,10 @@ router.get('/posts/:id/edit',requireLogin,async(req,res)=>{
 router.post('/edit/:id',requireLogin,validateBlog,async(req,res)=>{
     try{
     //console.log(req.body);
-    const obj=await Blog.findByIdAndUpdate(req.params.id,req.body);
+    let {title,content,hashtags}=req.body;
+    title=title.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+    const stringArray = hashtags. split(",");
+    const obj=await Blog.findByIdAndUpdate(req.params.id,{title,content,hashtags:stringArray,author:req.session.userid});
     req.flash('success','Successfully Updated');
     res.redirect('/');
     }

@@ -21,12 +21,12 @@
                 <div class="col-sm-7">
                     <label for="hashtags" class="form-label">Hash tags</label>
                     <input type="text" class="form-control" id="hashtags" name="hashtags"
-                        placeholder="Enter text for hashtags with space">
+                        placeholder="Enter text for hashtags with space" value="<%=post.hashtags%>">
                 </div>
                 <div class="col-sm-7 ">
                     <label for="content" class="form-label">Content</label>
-                    <textarea class="form-control" id="content" rows="3" name="content" placeholder="Start writing here"
-                        required></textarea>
+                    <textarea class="form-control" id="content" rows="3" name="content" placeholder="Start writing here" 
+                        required><%=post.content%></textarea>
 
                     <div class="invalid-feedback">
                         Content can't be empty.
