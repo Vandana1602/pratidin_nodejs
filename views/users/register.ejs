@@ -1,0 +1,62 @@
+<%- include('../partials/header.ejs') %>
+    <title>Register</title>
+    <%- include('../partials/navbar.ejs') %>
+
+
+        <div class="container row border border-secondary border-1 rounded shadow p-3 mt-3 rounded"
+            style="max-width: 700px; border-radius: 10px;background-color: #95D1CC;">
+
+            <form action="/register" method="post" class="needs-validation" novalidate>
+                <div class="row justify-content-center">
+                    <%- include('../partials/flash.ejs') %>
+                        <div class="col-sm-7 mb-3">
+                            <label for="name">Full name <span style="color: red;">*</span></label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Full name here"
+                                name="name" required>
+                            <div class="invalid-feedback">
+                                Name can't be empty.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-sm-7 mb-3">
+                            <label for="email">Email Address <span style="color: red;">*</span></label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email here"
+                                name="email" required>
+                            <div class="invalid-feedback">
+                                Please enter an Email.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-sm-7 mb-3">
+                            <label for="password">Password <span style="color: red;">*</span></label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter password here"
+                                name="password" required>
+                            <div class="invalid-feedback">
+                                Please enter a Password.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-sm-7 mb-3">
+                            <button class="btn btn-info " type="submit">Register</button>
+                        </div>
+                        <div class="col-sm-7 mb-3">
+                            <p> Existing User?&nbsp;&nbsp;<a href="/login">Log In</a></p>
+
+                        </div>
+
+                </div>
+
+            </form>
+        </div>
+
+
+
+
+        <script src="formValidationJs.js"></script>
+        <%- include('../partials/footer.ejs') %>

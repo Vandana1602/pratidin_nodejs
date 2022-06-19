@@ -1,0 +1,42 @@
+<%- include('../partials/header.ejs') %>
+<title>Log In</title>
+<%- include('../partials/navbar.ejs') %>
+
+
+    <div class="container row border border-secondary border-1 rounded shadow p-3 mt-3 rounded" style="max-width: 700px; border-radius: 10px;background-color: #95D1CC;">
+       
+        <form action="/login" method="post" class="needs-validation" novalidate>
+            <div class="row justify-content-center">
+                
+                <div class="col-sm-7 mb-3">
+                    <%- include('../partials/flash.ejs') %>
+                    <label for="email">Email Address <span style="color: red;">*</span></label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email here" name="email" required>
+                    <div class="invalid-feedback">
+                        Please enter an Email.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-sm-7 mb-3">
+                    <label for="password">Password <span style="color: red;">*</span></label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password here" name="password" required>
+                    <div class="invalid-feedback">
+                        Please enter a Password.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-sm-7 mb-3">
+                    <button class="btn btn-success " type="submit">Log in</button>
+                </div>
+                <div class="col-sm-7 mb-3"><p> New User?&nbsp;&nbsp;<a href="/register">Register Now</a></p></div></div>
+            </div>
+            
+        </form>
+    </div>
+
+    <script src="formValidationJs.js"></script>
+    <%- include('../partials/footer.ejs') %>

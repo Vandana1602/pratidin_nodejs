@@ -1,0 +1,57 @@
+<%- include('../partials/header.ejs') %>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
+    <title>Subscribe</title>
+    <%- include('../partials/navbar.ejs') %>
+    <div class="container row border border-secondary border-1 rounded shadow p-3 mt-3 rounded" style="max-width: 700px; border-radius: 10px;background-color: #95D1CC;">
+            <div class="col-12 col-sm-7  m-auto mt-3">
+                <form action="/subscribe" method="POST" class="needs-validation" novalidate>
+                    <div class="pl-5 justify-content-center ">
+                        <img class="mb-4" src="images/logo1.jpg" alt="logo" width="78" height="78">
+                    </div>
+                    <h3 class=" mb-4 font-weight-normal"> <strong>SUBSCRIBE</strong> to stay updated. </h3>
+
+                    <div>
+                        <label for="fname">First name <span style="color: red;">*</span></label>
+                        <input type="text" id="fname" class="form-control" name="fname" placeholder="First Name"
+                            required>
+                        <div class="invalid-feedback">
+                            Please type a first name.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div>
+                        <label for="lname">Last name <span style="color: red;">*</span></label>
+                        <input type="text" id="lname" class="form-control middle" name="lname" placeholder="Last Name"
+                            required>
+                        <div class="invalid-feedback">
+                            Please type a last name.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email">Email <span style="color: red;">*</span></label>
+                        <input type="email" id="email" class="form-control bottom" name="email"
+                            placeholder="Email Address" required>
+                        <div class="invalid-feedback">
+                            Please type a email.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="btn btn-lg btn-danger btn-block mt-3 mb-2" type="submit">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="formValidationJs.js"></script>
+
+
+        <%- include('../partials/footer.ejs') %>

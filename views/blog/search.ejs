@@ -1,0 +1,76 @@
+<%- include('../partials/header.ejs') %>
+    <title>Search</title>
+    <%- include('../partials/navbar.ejs') %>
+        <div class="row">
+            <div class="col-12 col-lg-10 col-sm-9 container-fluid row ">
+                <%- include('../partials/flash.ejs') %>
+                    <% for(let i=0;i< arr.length;i++){%>
+                        <div class="col-12 col-lg-4 col-md-5 mt-2 ">
+                            <div class="card shadow p-3 mb-5 bg-white rounded">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <%=arr[i]. title%>
+                                    </h4>
+                                    <p class="card-text">
+                                        <% if(arr[i].content.length>130){ %>
+                                            <%= arr[i].content.substring(0,130)+" ... "  %>
+                               
+                                        <% }else{ %>
+                                            <%= arr[i].content %>
+                                                <% } %>
+                                                <a href=" /posts/<%=arr[i]._id%>" style="color:#10034b"><button
+                                                    class="btn btn-secondary btn-sm">Read More</button></a>
+                                    </p>
+
+                                    <div>
+                                        <h6>Author: <%= arr[i].author.name %>
+                                        </h6>
+                                    </div>
+                                    <div>
+                                        <p class="card-subtitle mb-2 text-muted">
+                                            <strong> hashtags:</strong>
+                                            <% if(arr[i].hashtags.length < 4){%>
+                                                <% for (let hash of arr[i].hashtags){%>
+                                                    #<%= hash %>
+                                                        <% } %>
+                                                            <%}else{%>
+                                                                <% for (let j=0; j< 3;j++){%>
+                                                                    #<%= arr[i].hashtags[j] %>
+                                                                        <% } %>
+                                                                            ...
+                                                                            <%}%>
+                                        </p>
+                                        <% let str=arr[i].date.toString() %>
+                                            <p>
+                                                <%= str.substring(0,24) %>
+                                            </p>
+                                            <%if(arr[i].edited===true){%>
+                                                <span>Edited.</span>
+                                                <%}%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+
+            </div>
+            <div class="container border-success border-start border-3  col-12 col-lg-2 col-sm-3 bg-white pt-3">
+                   <h4><strong>Categories</strong></h4>
+                   <hr>
+                    <%for(let ele of hash){ %>
+                        
+                            <form action="/search" method="get" class="d-inline-block my-2">
+                                <button class="btn btn-info" name="searchText" type="submit"
+                                    value="<%= ele %>">
+                                    <%= ele %>
+                                </button>
+
+                            </form>
+                        <%}%>
+                
+
+
+
+            </div>
+        </div>
+        <%- include('../partials/footer.ejs') %>

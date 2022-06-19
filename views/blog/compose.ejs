@@ -1,0 +1,46 @@
+<%- include('../partials/header.ejs') %>
+    <title>Compose</title>
+    <%- include('../partials/navbar.ejs') %>
+
+        <div class="container pt-3">
+            
+            <form action="/compose" method="post" class="row g-3 needs-validation justify-content-center" novalidate>
+                <h1 class="col-sm-7">Create a new Blog</h1>
+                <div class="col-sm-7">
+                    <label for="title" class="form-label">Title <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter a title" required>
+                    <div class="invalid-feedback">
+                        Please provide a title.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <label for="hashtags" class="form-label">Hash tags</label>
+                    <input type="text" class="form-control" id="hashtags" name="hashtags" placeholder="Enter text for hashtags sepated with comma">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-sm-7 ">
+                    <label for="content" class="form-label">Content <span style="color: red;">*</span></label>
+                    <textarea class="form-control" id="content" rows="3" name="content" placeholder="Start writing here" required></textarea>
+                    
+                    <div class="invalid-feedback">
+                        Content can't be empty.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                
+                
+                <div class="col-sm-7">
+                    <button class="btn btn-primary" type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+        <script src="formValidationJs.js"></script>
+        <div></div>
+        <%- include('../partials/footer.ejs') %>
