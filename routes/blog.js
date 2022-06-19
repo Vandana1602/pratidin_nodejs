@@ -102,10 +102,10 @@ router.get('/posts/:id/edit',requireLogin,async(req,res)=>{
 router.post('/edit/:id',requireLogin,validateBlog,async(req,res)=>{
     try{
     //console.log(req.body);
-    let {title,content,hashtags}=req.body;
+    let {title,content,hashtags,edited}=req.body;
     title=title.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
     const stringArray = hashtags. split(",");
-    const obj=await Blog.findByIdAndUpdate(req.params.id,{title,content,hashtags:stringArray,author:req.session.userid});
+    const obj=await Blog.findByIdAndUpdate(req.params.id,{title,content,hashtags:stringArray,author:req.session.userid,edited});
     req.flash('success','Successfully Updated');
     res.redirect('/');
     }
