@@ -43,7 +43,7 @@ store.on("error",function(e){
     console.log("session store Error!!",e);
 })
 let sessionConfig={
-    secret,
+    secret, //store
     name:'session',
     resave:false,
     saveUninitialized:false,
@@ -76,3 +76,4 @@ const port=process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 })
+
